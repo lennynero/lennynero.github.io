@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Configuration</title>
+    <head>
+	<title>Configuration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
@@ -11,20 +11,28 @@
 <body>
 <div data-role="page" id="main">
   <div data-role="header" class="jqm-header">
-    <h1>SortRevolution Configuration</h1>
+    <h1>Configuration</h1>
   </div>
   
   <div data-role="content">
     <div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
       <div data-role="collapsible" data-collapsed="false">
-        <h3>General</h3>
+        <h3>Format</h3>
         <fieldset data-role="controlgroup" data-mini="true">
-          <legend>Date Format:</legend>
-          <input name="dateformat" id="dateformat-0" value="0" checked="checked" type="radio"/>
+          <legend>Date:</legend>
+          <input name="dateformat" id="dateformat-0" value="0" type="radio"/>
           <label for="dateformat-0">DD Month</label>
           <input name="dateformat" id="dateformat-1" value="1" type="radio"/>
           <label for="dateformat-1">Month DD</label>
         </fieldset>
+	<fieldset data-role="controlgroup" data-mini="true">
+          <legend>Time:</legend>
+          <input name="timeformat" id="timeformat-0" value="0" type="radio"/>
+          <label for="timeformat-0">24H</label>
+          <input name="timeformat" id="timeformat-1" value="1" type="radio"/>
+          <label for="timeformat-1">AM/PM</label>
+        </fieldset>
+
       </div>
     </div>
   </div>
@@ -44,6 +52,7 @@
   function saveOptions() {
     var options = {
       'intl_date_format':     Number( $("input[name=dateformat]:checked").val() ),
+      'intl_time_format':     Number( $("input[name=timeformat]:checked").val() )
     }
     return options;
   }
@@ -53,7 +62,8 @@
       if (window.localStorage.pebble_sortrevolution_options) {
         ls_pto = JSON.parse(window.localStorage.pebble_sortrevolution_options);
         // the Pebble webview dies on the next line...
-        $("input[name=dateformat][id=dateformat-"+ls_pto["intl_date_format"]+"]").prop('checked',true);          
+        $("input[name=dateformat][id=dateformat-"+ls_pto["intl_date_format"]+"]").prop('checked',true);
+	$("input[name=timeformat][id=timeformat-"+ls_pto["intl_time_format"]+"]").prop('checked',true);
       }
     }
     $("#b-cancel").click(function() {
@@ -66,7 +76,7 @@
       
       ls_pto = JSON.stringify(saveOptions());
       if (typeof window.localStorage !== "undefined") {
-        window.localStorage.pebble_timely_options = ls_pto;
+        window.localStorage.pebble_ortrevolution_options = ls_pto;
       }
       var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
       console.log("Warping to: " + location);
