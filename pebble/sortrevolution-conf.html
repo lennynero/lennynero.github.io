@@ -26,13 +26,20 @@
           <label for="dateformat-1">Month DD</label>
         </fieldset>
 	<fieldset data-role="controlgroup" data-mini="true">
-          <legend>Time:</legend>
+          <legend>Time(BETA):</legend>
           <input name="timeformat" id="timeformat-0" value="0" type="radio"/>
           <label for="timeformat-0">24H</label>
           <input name="timeformat" id="timeformat-1" value="1" type="radio"/>
           <label for="timeformat-1">AM/PM</label>
         </fieldset>
 
+      </div>
+      <div data-role="fieldcontain">
+	<label for="lang" class="select">Language(TODO):</label>
+	<select name="lang" id="lang">
+	  <option value="0">Italian</option>
+          <option value="1">English</option>
+        </select>
       </div>
     </div>
   </div>
@@ -51,8 +58,9 @@
 <script>
   function saveOptions() {
     var options = {
-      'intl_date_format':     Number( $("input[name=dateformat]:checked").val() ),
-      'intl_time_format':     Number( $("input[name=timeformat]:checked").val() )
+      'intl_date_format':	Number( $("input[name=dateformat]:checked").val() ),
+      'intl_time_format':	Number( $("input[name=timeformat]:checked").val() ),
+      'intl_lang':		Number( $("select[name=lang]").selectmenu("lang") )
     }
     return options;
   }
@@ -64,6 +72,7 @@
         // the Pebble webview dies on the next line...
         $("input[name=dateformat][id=dateformat-"+ls_pto["intl_date_format"]+"]").prop('checked',true);
 	$("input[name=timeformat][id=timeformat-"+ls_pto["intl_time_format"]+"]").prop('checked',true);
+	//$("select[name=lang]").selectmenu("lang", "option", ?);
       }
     }
     $("#b-cancel").click(function() {
