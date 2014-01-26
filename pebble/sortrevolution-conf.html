@@ -59,8 +59,8 @@
   function saveOptions() {
     var options = {
       'intl_date_format':	Number( $("input[name=dateformat]:checked").val() ),
-      'intl_time_format':	Number( $("input[name=timeformat]:checked").val() ),
-      'intl_lang':		Number( $("select[name=lang]").selectmenu("lang") )
+      'intl_time_format':	Number( $("input[name=timeformat]:checked").val() )
+      //'intl_lang':		Number( $("select[name=lang]").selectmenu("lang") )
     }
     return options;
   }
