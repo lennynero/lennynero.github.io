@@ -59,8 +59,8 @@
   function saveOptions() {
     var options = {
       'intl_date_format':	Number( $("input[name=dateformat]:checked").val() ),
-      'intl_time_format':	Number( $("input[name=timeformat]:checked").val() )
-      //'intl_lang':		Number( $("select[name=lang]").selectmenu("lang") )
+      'intl_time_format':	Number( $("input[name=timeformat]:checked").val() ),
+      'intl_lang':		Number( $("#lang option:selected").val() )
     }
     return options;
   }
@@ -70,9 +70,10 @@
       if (window.localStorage.pebble_sortrevolution_options) {
         ls_pto = JSON.parse(window.localStorage.pebble_sortrevolution_options);
         // the Pebble webview dies on the next line...
-        $("input[name=dateformat][id=dateformat-"+ls_pto["intl_date_format"]+"]").prop('checked',true);
-	$("input[name=timeformat][id=timeformat-"+ls_pto["intl_time_format"]+"]").prop('checked',true);
-	//$("select[name=lang]").selectmenu("lang", "option", ?);
+        $("input[name=dateformat][id=dateformat-"+ls_pto["intl_date_format"]+"]").prop("checked",true);
+	$("input[name=timeformat][id=timeformat-"+ls_pto["intl_time_format"]+"]").prop("checked",true);
+	$("#lang option[value="+ls_pto["intl_lang"]+"]").attr["selected", "selected");
+	$("#lang").selectmenu("refresh");
       }
     }
     $("#b-cancel").click(function() {
@@ -85,7 +86,7 @@
       
       ls_pto = JSON.stringify(saveOptions());
       if (typeof window.localStorage !== "undefined") {
-        window.localStorage.pebble_ortrevolution_options = ls_pto;
+        window.localStorage.pebble_sortrevolution_options = ls_pto;
       }
       var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
       console.log("Warping to: " + location);
