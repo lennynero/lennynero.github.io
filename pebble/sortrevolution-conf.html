@@ -72,8 +72,7 @@
         // the Pebble webview dies on the next line...
         $("input[name=dateformat][id=dateformat-"+ls_pto["intl_date_format"]+"]").prop("checked",true);
 	$("input[name=timeformat][id=timeformat-"+ls_pto["intl_time_format"]+"]").prop("checked",true);
-	$("#lang option[value="+ls_pto["intl_lang"]+"]").attr["selected", "selected");
-	$("#lang").selectmenu("refresh");
+	$("#lang").val(ls_pto["intl_lang"]).selectmenu("refresh");
       }
     }
     $("#b-cancel").click(function() {
