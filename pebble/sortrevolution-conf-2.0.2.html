@@ -15,7 +15,7 @@
   </div>
   
   <div data-role="content">
-    <h2>SortRevolution 2.0.2 Settings:</h2>
+    <h3>SortRevolution v2.0.2</h3>
     <div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
       <div data-role="collapsible" data-collapsed="false">
         <h3>Format</h3>
@@ -70,9 +70,8 @@
     if (typeof window.localStorage !== "undefined") {
       if (window.localStorage.pebble_sortrevolution_options) {
         ls_pto = JSON.parse(window.localStorage.pebble_sortrevolution_options);
-        // the Pebble webview dies on the next line...
-        $("input[name=dateformat][id=dateformat-"+ls_pto["0"]+"]").prop("checked",true);
-	$("input[name=timeformat][id=timeformat-"+ls_pto["1"]+"]").prop("checked",true);
+        $("#dateformat-"+ls_pto["0"]).attr("checked",true).checkboxradio("refresh");
+	$("#timeformat-"+ls_pto["1"]).attr("checked",true).checkboxradio("refresh");
 	$("#lang").val(ls_pto["2"]).selectmenu("refresh");
       }
     }
