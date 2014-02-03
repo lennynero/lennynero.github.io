@@ -71,9 +71,9 @@
       if (window.localStorage.pebble_sortrevolution_options) {
         ls_pto = JSON.parse(window.localStorage.pebble_sortrevolution_options);
         // the Pebble webview dies on the next line...
-        $("input[name=dateformat][id=dateformat-"+ls_pto["intl_date_format"]+"]").prop("checked",true);
-	$("input[name=timeformat][id=timeformat-"+ls_pto["intl_time_format"]+"]").prop("checked",true);
-	$("#lang").val(ls_pto["intl_lang"]).selectmenu("refresh");
+        $("input[name=dateformat][id=dateformat-"+ls_pto["0"]+"]").prop("checked",true);
+	$("input[name=timeformat][id=timeformat-"+ls_pto["1"]+"]").prop("checked",true);
+	$("#lang").val(ls_pto["2"]).selectmenu("refresh");
       }
     }
     $("#b-cancel").click(function() {
