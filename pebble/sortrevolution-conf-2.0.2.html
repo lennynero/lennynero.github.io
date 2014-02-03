@@ -15,6 +15,7 @@
   </div>
   
   <div data-role="content">
+    <h2>SortRevolution 2.0.2 Settings:</h2>
     <div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
       <div data-role="collapsible" data-collapsed="false">
         <h3>Format</h3>
@@ -58,9 +59,9 @@
 <script>
   function saveOptions() {
     var options = {
-      '1':	Number( $("input[name=dateformat]:checked").val() ),
-      '2':	Number( $("input[name=timeformat]:checked").val() ),
-      '3':	Number( $("#lang option:selected").val() )
+      '0':	Number( $("input[name=dateformat]:checked").val() ),
+      '1':	Number( $("input[name=timeformat]:checked").val() ),
+      '2':	Number( $("#lang option:selected").val() )
     }
     return options;
   }
